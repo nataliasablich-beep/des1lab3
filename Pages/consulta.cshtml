@@ -1,0 +1,33 @@
+﻿@page
+@model des1lab3.Pages.ConsultaModel
+@{
+    ViewData["Title"] = "Consulta de productos";
+}
+
+<h2>Consulta de productos</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Productos)
+        {
+            <tr>
+                <td>@item.IdProducto</td>
+                <td>@item.Nombre</td>
+                <td>@item.Precio</td>
+                <td>@item.Categoria</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="/Index">Volver al inicio</a>
+</p>
