@@ -1,0 +1,40 @@
+﻿@page
+@model Desp1Lab3.Pages.AltaModel
+@{
+    ViewData["Title"] = "Alta de productos";
+}
+
+<h2>Alta de productos</h2>
+
+<form method="post">
+    <p>
+        <label>Nombre</label><br />
+        <input asp-for="Nombre" />
+    </p>
+    <p>
+        <label>Precio</label><br />
+        <input asp-for="Precio" />
+    </p>
+    <p>
+        <label>Categoría</label><br />
+        <select asp-for="Categoria">
+            <option value="0">Seleccione una categoría</option>
+            @foreach (var item in Model.Categorias)
+            {
+                <option value="@item.IdCategoria">@item.Descripcion</option>
+            }
+        </select>
+    </p>
+    <p>
+        <button type="submit">Confirmar</button>
+    </p>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <p>@Model.Mensaje</p>
+}
+
+<p>
+    <a asp-page="/Index">Volver al inicio</a>
+</p>
