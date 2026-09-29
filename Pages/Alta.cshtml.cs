@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 
-namespace Desp1Lab3.Pages
+namespace des1lab3.Pages
 {
     public class AltaModel : PageModel
     {

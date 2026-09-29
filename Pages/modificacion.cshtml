@@ -1,0 +1,64 @@
+﻿@page
+@model des1lab3.Pages.ModificacionModel
+@{
+    ViewData["Title"] = "Modificacion de productos";
+}
+
+<h2>Modificación de productos</h2>
+
+<form method="post" asp-page-handler="Cargar">
+    <p>
+        <label>Producto</label><br />
+        <select asp-for="IdSeleccionado">
+            <option value="0">Seleccione un producto</option>
+            @foreach (var item in Model.Productos)
+            {
+                <option value="@item.IdProducto">@item.IdProducto - @item.Nombre</option>
+            }
+        </select>
+    </p>
+    <p>
+        <button type="submit">Cargar</button>
+    </p>
+</form>
+
+@if (Model.IdProducto > 0)
+{
+    <form method="post" asp-page-handler="Guardar">
+        <input type="hidden" asp-for="IdProducto" />
+        <input type="hidden" asp-for="NombreOriginal" />
+        <input type="hidden" asp-for="PrecioOriginal" />
+        <input type="hidden" asp-for="CategoriaOriginal" />
+
+        <p>
+            <label>Nombre</label><br />
+            <input asp-for="Nombre" />
+        </p>
+        <p>
+            <label>Precio</label><br />
+            <input asp-for="Precio" />
+        </p>
+        <p>
+            <label>Categoría</label><br />
+            <select asp-for="Categoria">
+                <option value="0">Seleccione una categoría</option>
+                @foreach (var item in Model.Categorias)
+                {
+                    <option value="@item.IdCategoria">@item.Descripcion</option>
+                }
+            </select>
+        </p>
+        <p>
+            <button type="submit">Guardar</button>
+        </p>
+    </form>
+}
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <p>@Model.Mensaje</p>
+}
+
+<p>
+    <a asp-page="/Index">Volver al inicio</a>
+</p>
