@@ -1,0 +1,50 @@
+﻿@page
+@model des1lab3.Pages.BajaModel
+@{
+    ViewData["Title"] = "Baja de productos";
+}
+
+<h2>Baja de productos</h2>
+
+<form method="post" class="form-ancho" onsubmit="return confirmar();">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Id</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Productos)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="Seleccionados" value="@item.IdProducto" />
+                    </td>
+                    <td>@item.IdProducto</td>
+                    <td>@item.Nombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        <button type="submit">Eliminar</button>
+    </p>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <p class="@(Model.Correcto ? "ok" : "error")">@Model.Mensaje</p>
+}
+
+<p class="volver">
+    <a asp-page="/Index">Volver al inicio</a>
+</p>
+
+<script>
+    function confirmar() {
+        return confirm("¿Confirma la eliminación de los productos seleccionados?");
+    }
+</script>
