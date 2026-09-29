@@ -65,7 +65,7 @@ namespace des1lab3.Pages
                     using (SqlCommand comando = new SqlCommand(consulta, conexion))
                     {
                         comando.Parameters.AddWithValue("@nombre", Nombre);
-                        comando.Parameters.AddWithValue("@precio", precio);
+                        comando.Parameters.AddWithValue("@precio", Precio);
                         comando.Parameters.AddWithValue("@categoria", Categoria);
                         comando.ExecuteNonQuery();
                     }
