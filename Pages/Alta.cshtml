@@ -32,7 +32,7 @@
 
 @if (!string.IsNullOrEmpty(Model.Mensaje))
 {
-    <p>@Model.Mensaje</p>
+    <p class="@(Model.Correcto ? "ok" : "error")">@Model.Mensaje</p>
 }
 
 <p>

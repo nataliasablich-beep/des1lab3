@@ -56,9 +56,8 @@
 
 @if (!string.IsNullOrEmpty(Model.Mensaje))
 {
-    <p>@Model.Mensaje</p>
+    <p class="@(Model.Correcto ? "ok" : "error")">@Model.Mensaje</p>
 }
-
 <p>
     <a asp-page="/Index">Volver al inicio</a>
 </p>

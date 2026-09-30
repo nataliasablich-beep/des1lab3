@@ -42,6 +42,7 @@ namespace des1lab3.Pages
 
         public List<CategoriaItem> Categorias { get; set; } = new();
 
+        public bool Correcto { get; set; } = true;
         public string Mensaje { get; set; } = "";
 
         public void OnGet()
@@ -56,6 +57,7 @@ namespace des1lab3.Pages
             if (IdSeleccionado == 0)
             {
                 Mensaje = "Seleccione un producto.";
+                Correcto = false;
                 return Page();
             }
 
@@ -75,6 +77,7 @@ namespace des1lab3.Pages
                         if (!lector.Read())
                         {
                             Mensaje = "No se encontro el producto.";
+                            Correcto = false;
                             return Page();
                         }
 
@@ -101,18 +104,21 @@ namespace des1lab3.Pages
             if (string.IsNullOrWhiteSpace(Nombre))
             {
                 Mensaje = "Ingrese el nombre.";
+                Correcto = false;
                 return Page();
             }
 
             if (!decimal.TryParse(Precio, out decimal precio) || precio <= 0)
             {
                 Mensaje = "Ingrese un precio valido.";
+                Correcto = false;
                 return Page();
             }
 
             if (Categoria == 0)
             {
                 Mensaje = "Seleccione una categoria.";
+                Correcto = false;
                 return Page();
             }
 
@@ -124,6 +130,7 @@ namespace des1lab3.Pages
                 && Categoria == CategoriaOriginal)
             {
                 Mensaje = "Debe modificar al menos un campo.";
+                Correcto = false;
                 return Page();
             }
 
@@ -157,6 +164,7 @@ namespace des1lab3.Pages
             catch (Exception)
             {
                 Mensaje = "No se pudo modificar el producto.";
+                Correcto = false;
             }
 
             return Page();
